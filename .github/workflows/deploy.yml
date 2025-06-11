@@ -18,6 +18,9 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+    - name: Set up Docker Buildx (for better caching and future use)
+      uses: docker/setup-buildx-action@v3
+
     - name: Docker Login to ACR
       run: |
         echo "${{ secrets.REGISTRY_PASSWORD }}" | docker login yazilimacrfinal.azurecr.io -u ${{ secrets.REGISTRY_USERNAME }} --password-stdin
