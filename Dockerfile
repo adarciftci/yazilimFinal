@@ -17,7 +17,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-# 🛠️ start.sh'yi çalıştırılabilir yap
+# 🛠️ start.sh dosyasına çalıştırma izni ver
 RUN chmod +x start.sh
 
 RUN useradd -rm -d /home/flaskuser -s /bin/bash -g root -G sudo -u 1000 flaskuser && \
@@ -25,4 +25,4 @@ RUN useradd -rm -d /home/flaskuser -s /bin/bash -g root -G sudo -u 1000 flaskuse
 
 EXPOSE 5000 22
 
-CMD ["./start.sh"]
+CMD ["/bin/bash", "./start.sh"]
