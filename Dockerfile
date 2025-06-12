@@ -4,31 +4,30 @@ FROM python:3.11-slim
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-# Gerekli sistem paketleri (SSH vs.)
+# Gerekli sistem paketleri
 RUN apt-get update && \
     apt-get install -y openssh-server && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# SSH servisi için gerekli dizin
+# SSH dizini oluştur
 RUN mkdir /var/run/sshd
 
-# Uygulama klasörü
+# Çalışma dizini
 WORKDIR /app
 
-# Bağımlılıkları yükle
+# Gereksinimleri yükle
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Tüm kaynak kodunu kopyala
+# Tüm dosyaları kopyala
 COPY . .
 
-# start.sh dosyasını çalıştırılabilir yap
-RUN chmod +x start.sh
+# start.sh'yi çalıştırılabilir yap
+RUN chmod +x /app/start.sh
 
 # Portları aç
 EXPOSE 5000 2222
 
-# Doğru şekilde tam path ile çalıştır
-
+# Uygulama başlatma komutu
 CMD ["/bin/bash", "/app/start.sh"]
