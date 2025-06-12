@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
-echo "---- Flask Başlatılıyor ----"
-service ssh start
-python app.py
+
+/usr/sbin/sshd -p 2222 &
+
+python3 app.py
