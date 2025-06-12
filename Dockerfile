@@ -30,4 +30,5 @@ RUN chmod +x start.sh
 EXPOSE 5000 2222
 
 # Doğru şekilde tam path ile çalıştır
+
 CMD ["/bin/bash", "/app/start.sh"]
