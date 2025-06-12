@@ -23,6 +23,6 @@ RUN chmod +x start.sh
 RUN useradd -rm -d /home/flaskuser -s /bin/bash -g root -G sudo -u 1000 flaskuser && \
     echo 'flaskuser:flaskpassword' | chpasswd
 
-EXPOSE 5000 22
+EXPOSE 5000 2222
 
 CMD ["/bin/bash", "./start.sh"]
