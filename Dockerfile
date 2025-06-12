@@ -26,3 +26,6 @@ EXPOSE 5000 2222
 
 
 CMD ["/bin/bash", "./start.sh"]
+
+RUN ls -al /app
+
